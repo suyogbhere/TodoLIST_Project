@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <script src="../static/js/bootstrap.js"></script>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/popper.js"></script>
+</head>
+<body>
+    <div class="mt-5 container">
+        <h2 class=" text-center">ToDo Application</h2> <br>
+        <form action="/add/" method="post" class="form-control">
+            <div>
+                <label for="">Todo Title</label> <br>
+                <input type="text" name="title" id="" class="form-control" placeholder="Please enter Todo......">
+            </div> <br>
+            <button class="btn btn-primary" type="submit">Add</button>
+        </form> <br>
+        <hr>
+        <br>
+
+        
+            {% for todo in todo_list %}
+            <div class="card">
+                <p class="mx-2">{{todo.id}}  |  {{todo.title}}</p>
+                {% if todo.complete == False %}
+                     <span>Not complete</span>
+                {% else %}
+                    <span>complete</span>
+                {% endif %}
+                <div>
+                    <a href="/update/{{todo.id}}" class="mx-2 my-2 btn btn-success col-sm-1">Update</a>
+                    <a href="/delete/{{todo.id}}" class="mx-2 btn btn-danger col-sm-1">Delete</a>
+                </div>
+                
+            </div> <br>
+            {% endfor %}
+        
+    </div>
+</body>
+</html>
